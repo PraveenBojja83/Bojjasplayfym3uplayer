@@ -15,7 +15,7 @@ body {
   left: 0;
   right: 0;
   height: 60px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #474747 100%);
   border-bottom: 2px solid #333;
   display: flex;
   align-items: center;
@@ -57,6 +57,7 @@ body {
 
 /* Right logo */
 .logo-right {
+  height: 40px; width: auto;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
