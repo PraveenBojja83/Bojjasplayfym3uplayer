@@ -1,0 +1,359 @@
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+  height: 100vh; 
+  overflow: hidden;
+  background: #000;
+}
+
+/* TOP HEADER BAR */
+#app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border-bottom: 2px solid #333;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo { flex: 0 0 auto; }
+#logo-img { 
+  height: 40px; width: auto; 
+  border-radius: 8px; 
+  animation: blink 2.5s infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
+
+.app-name {
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #424141;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+}
+
+.header-spacer { flex: 0 0 auto; width: 300px; }
+
+/* NAV BAR UNDER HEADER (TV1/TV2) */
+#tv-nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: #1b1b1b;
+  border-bottom: 1px solid #333;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 900;
+}
+
+.tv-buttons {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 300px;
+}
+
+.tv-btn {
+  flex: 1;
+  padding: 8px 6px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.tv-btn.active { background: #28a745; }
+
+#load-btn {
+  padding: 8px 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#load-btn:hover { background: #0056b3; }
+
+#status {
+  font-size: 8px;
+  color: #e9f505;
+  text-align: right;
+  flex-basis: 100px;
+}
+
+/* CATEGORY BAR */
+#category-bar {
+  position: fixed;
+  top: 106px;
+  left: 0;
+  right: 0;
+  background: #222;
+  border-bottom: 1px solid #333;
+  padding: 8px 15px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  z-index: 800;
+}
+
+.cat-btn {
+  padding: 6px 12px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cat-btn.active {
+  background: #ffc107;
+  color: #000;
+}
+
+.cat-btn:hover { background: #555; }
+
+/* MAIN LAYOUT - Desktop */
+#main {
+  position: absolute;
+  top: 152px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+}
+
+#video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+}
+
+/* VIDEO + CHANNEL BAR - Desktop */
+#video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 220px;
+  right: 0;
+  width: auto;
+  height: 100%;
+  background: #000;
+  object-fit: contain;
+}
+
+#channel-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+  padding: 10px 8px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+#channel-info {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+#channels {
+  flex: 1;
+  overflow-y: auto;
+  display: block;
+}
+
+.channel {
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  background: rgba(40,40,40,0.85);
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.channel:hover { background: rgba(0,123,255,0.9); }
+.channel.active {
+  background: rgba(0,86,179,0.95);
+  border-color: #fff;
+}
+
+.no-channels {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* STATUS COLORS */
+.status.loading { color: #0d6efd; }
+.status.success { color: #28a745; }
+.status.error { color: #dc3545; }
+
+/* MOBILE RESPONSIVE - Tablets & Phones */
+@media (max-width: 768px) {
+  body { overflow: auto; }
+
+  /* Header - Fixed sizing */
+  #app-header {
+    height: 40px;
+    padding: 0 12px;
+  }
+  #logo-img { height: 34px; }
+  .app-name {
+    font-size: 10px;
+    margin-left: 30px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* TV Nav - Compact */
+  #tv-nav {
+    top: 50px;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  .tv-buttons { flex: 0 0 200px; gap: 4px; }
+  .tv-btn { padding: 6px 4px; font-size: 12px; }
+  #load-btn { padding: 6px 6px; font-size: 10px; }
+  #status {
+    flex-basis: 100%;
+    text-align: left;
+    margin-top: 2px;
+    font-size: 6px;
+  }
+
+  /* Category Bar - Compact */
+  #category-bar {
+    top: 98px;
+    padding: 4px 10px;
+    gap: 3px;
+  }
+  .cat-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  /* Main - Adjusted for mobile bars */
+  #main {
+    top: 160px; /* header(50)+tv-nav(42)+cat-bar(38)+padding(30) */
+  }
+
+  /* MOBILE: TOP CHANNEL BAR (Visible over video) */
+  #channel-bar {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 85px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.3));
+    flex-direction: row;
+    overflow: hidden;
+    padding: 4px 8px;
+    z-index: 20;
+  }
+
+  #channels {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 3px;
+    height: 100%;
+  }
+
+  .channel {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 10px;
+    padding: 2px 6px;
+    min-width: 70px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #channel-info { display: none; }
+
+  /* Video - Full width, skips channel bar */
+  #video {
+    left: 0 !important;
+    top: 85px !important; /* Skips channel bar */
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #app-header { height: 45px; padding: 0 8px; }
+  #logo-img { height: 30px; }
+  .app-name { font-size: 13px; }
+  
+  #tv-nav { top: 45px; padding: 4px 8px; }
+  .tv-buttons { flex: 0 0 160px; }
+  .tv-btn { font-size: 11px; padding: 5px 3px; }
+  
+  #category-bar { top: 91px; padding: 3px 8px; }
+  .cat-btn { padding: 3px 6px; font-size: 10px; }
+  
+  #main { top: 148px; }
+  
+  #channel-bar { height: 75px; padding: 2px 6px; }
+  .channel { 
+    font-size: 9px; 
+    padding: 2px 4px; 
+    min-width: 60px; 
+    height: 32px;
+  }
+  
+  #video { top: 75px !important; }
+}
