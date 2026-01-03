@@ -54,7 +54,34 @@ body {
   letter-spacing: 1px;
 }
 
-.header-spacer { flex: 0 0 auto; width: 300px; }
+
+/* Right logo */
+.logo-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  animation: blink 2.5s infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+#logo1-img {
+  height: 30px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.header-spacer { flex: 0 0 auto; width: auto;  }
 
 /* NAV BAR UNDER HEADER (TV1/TV2) */
 #tv-nav {
@@ -250,6 +277,9 @@ body {
     letter-spacing: 0.3px;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  #logo1-img {
+    height: 24px;        /* smaller on mobile */
   }
 
   /* TV Nav - Compact */
